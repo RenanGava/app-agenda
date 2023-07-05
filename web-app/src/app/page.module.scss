@@ -1,3 +1,11 @@
 .container {
   min-height: 100vh;
+  background-image: url("./background-1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+
+  @media (max-width: 600px){
+    background-image: url("./background-mobile.png");
+  }
 }
