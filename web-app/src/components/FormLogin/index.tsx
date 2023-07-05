@@ -25,7 +25,7 @@ export function FormLogin() {
     )
 
     const labelPassword = !password && (
-        <label htmlFor="email">
+        <label htmlFor="password">
             <Image
                 className={styles.iconPassword}
                 src={iconPassword}
