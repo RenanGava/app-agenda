@@ -1,9 +1,11 @@
 import Image from "next/image"
 import Link from "next/link"
-import singIn from '../../icons/logout.png'
 import styles from './style.module.scss'
+import { Navbar } from "../NavBar"
 
 export function Header() {
+
+    const isLogin = false
 
 
     return (
@@ -14,15 +16,9 @@ export function Header() {
             </div>
 
 
-            <Link className={styles.ContainerLink} href="/">
-                <div className={styles.link}>
-                    <Image className={styles.icon}
-                        src={singIn}
-                        alt="logout"
-                    />
-                    Login
-                </div>
-            </Link>
+            <Navbar
+                isLogin={isLogin}
+            />
 
         </header>
     )
