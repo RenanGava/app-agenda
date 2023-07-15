@@ -42,7 +42,7 @@ export function Navbar({ isLogin }: NavBarProps) {
                     <div>
                         <Link
                             className={styles.link}
-                            href={''}
+                            href={'/dash'}
                         >
                             Dash
                         </Link>
