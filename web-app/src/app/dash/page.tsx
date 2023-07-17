@@ -1,16 +1,21 @@
 'use client'
+import { Header } from '@/components/Header'
 import { RegisterClient } from '@/components/RegisterClient'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { ChangeEvent } from 'react'
+import styles from './styles.module.scss'
+import { ListClients } from '@/components/ListClients'
 
 
-export default function Dash(){
+export default function Dash() {
 
 
-    return(
-        <>
-            <h1>Dash</h1>
-            <RegisterClient/>
-        </>
+    return (
+        <div className={styles.container}>
+            <Header />
+            <div className={styles.content}>
+                <RegisterClient />
+                <ListClients />
+            </div>
+        </div>
     )
 }

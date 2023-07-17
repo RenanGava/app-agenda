@@ -1,0 +1,140 @@
+.formContainer{
+    max-width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    border: 1px solid;
+    border-color: aquamarine;
+
+    h1{
+        margin-bottom: 4rem;
+        text-transform: uppercase;
+        color: var(--text);font-weight: bold;
+    }
+
+    .client_data{
+        width: 100%;
+        max-width: 400px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        
+        .inputName{
+            height: 40px;
+            padding-left: 1rem;
+            border: 2px solid var(--border);
+        }
+        input{
+            border-radius: 0.25rem;
+            border: 0;
+        }
+
+        .wrap{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            margin-top: 1rem;
+            input.inputTel{
+                width: 55%;
+                padding-left: 1rem;
+                border: 2px solid var(--border);
+            }
+
+            input.inputValue{
+                width: 40%;
+                height: 40px;
+                text-align: center;
+                border: 2px solid var(--border);
+            }
+        }
+
+    }
+
+    div.serviceHourWraper{
+        margin: 1rem;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 400px;
+
+    
+        div.service_data{
+            
+            
+            input{
+                line-height: 40px;
+                padding-left: 1rem;
+                border-radius: 0.25rem;
+                border: 2px solid var(--border);
+            }
+        }
+
+        .selectHour{
+            display: flex;
+            background-color: white;
+            border: 2px solid var(--border);
+            padding: calc(0.68rem - 23.6px);
+            line-height: 40px;
+            padding: 0 1rem;
+            letter-spacing: 0.2rem;
+            border-radius: 0.25rem;
+
+            select{
+                background-color: transparent;
+                border: 0;
+                appearance: none;
+
+                option{
+                    padding: 1rem;
+                }
+
+
+                &::-webkit-scrollbar{
+                    width: 0px;
+                }
+            }
+
+            p{
+                margin-right: 0.5rem;
+            }
+        }
+
+
+        
+
+        @media (max-width: 450px) {
+            flex-direction: column;
+
+            div.service_data{
+            
+                input{
+                    width: 100%;
+                }
+            }
+
+            .selectHour{
+                max-width: fit-content;
+                margin: 1rem auto 0 auto;
+            }
+        }
+    }
+    .button{
+        line-height: 40px;
+        width: fit-content;
+        padding: 0 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
+        background-color: var(--buttonColor);
+        border: 0;
+        border-radius: 0.25rem;
+        height: 40px;
+
+        &:hover{
+            filter:brightness(0.8)
+        }
+    }
+}
