@@ -20,7 +20,7 @@ export function RegisterClient() {
     }
 
     return (
-        <div>
+        <div className={styles.container}>
 
             <form className={styles.formContainer}>
                 <div>
@@ -38,32 +38,7 @@ export function RegisterClient() {
                         <input type="text" placeholder='Serviço' />
                     </div>
                     <div className={styles.selectHour}>
-                        <p>Horário: </p>
-                        <select
-                            name="select"
-                            defaultValue={'Horas'}
-                            onChange={handleHouricker}
-                        >
-                            {hours.map((hour, i) => (
-                                <option
-                                    key={i}
-                                    value={hour}
-                                >{hour < 10 ? '0' + hour : hour}</option>
-                            ))}
-                        </select>
-                        <span>:</span>
-                        <select
-                            name="select"
-                            defaultValue={'Horas'}
-                            onChange={handleMinutePicker}
-                        >
-                            {minutes.map((minute, i) => (
-                                <option
-                                    key={i}
-                                    value={minute}
-                                >{minute < 10 ? '0' + minute : minute}</option>
-                            ))}
-                        </select>
+                        <input type="datetime-local" />
                     </div>
                 </div>
 

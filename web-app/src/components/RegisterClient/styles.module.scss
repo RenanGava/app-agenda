@@ -1,18 +1,27 @@
+.container{
+    margin: 0 1rem;
+}
+
 .formContainer{
     max-width: 500px;
-    height: 500px;
+    height: 560px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    border: 1px solid;
-    border-color: aquamarine;
+    background-image: url('../../../public/background-mobile.png');
+    background-size: 170%;
+    background-repeat: no-repeat;
+    background-position: top;
+    padding: 0 1rem;
 
     h1{
-        margin-bottom: 4rem;
+        margin-top: 7rem;
+        margin-bottom: 3rem;
         text-transform: uppercase;
         color: var(--text);font-weight: bold;
+        font-size: 2rem;
     }
 
     .client_data{
@@ -70,6 +79,7 @@
                 padding-left: 1rem;
                 border-radius: 0.25rem;
                 border: 2px solid var(--border);
+                outline: 0;
             }
         }
 
@@ -83,24 +93,6 @@
             letter-spacing: 0.2rem;
             border-radius: 0.25rem;
 
-            select{
-                background-color: transparent;
-                border: 0;
-                appearance: none;
-
-                option{
-                    padding: 1rem;
-                }
-
-
-                &::-webkit-scrollbar{
-                    width: 0px;
-                }
-            }
-
-            p{
-                margin-right: 0.5rem;
-            }
         }
 
 
