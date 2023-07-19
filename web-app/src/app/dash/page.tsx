@@ -1,9 +1,12 @@
 'use client'
 import { Header } from '@/components/Header'
 import { RegisterClient } from '@/components/RegisterClient'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styles from './styles.module.scss'
 import { ListClients } from '@/components/ListClients'
+import { CalendarComponent } from '@/components/Calendar'
+import Modal from 'react-modal'
+import { RegisterModal } from '@/components/ModalRegisterClient'
+
 
 
 export default function Dash() {
@@ -13,9 +16,15 @@ export default function Dash() {
         <div className={styles.container}>
             <Header />
             <div className={styles.content}>
-                <RegisterClient />
+
+                <CalendarComponent />
                 <ListClients />
+
+                
+                <RegisterModal children={<RegisterClient/>}/>
             </div>
         </div>
     )
 }
+
+Modal.setAppElement('#root')
