@@ -7,7 +7,7 @@ interface RegisterModalProps {
 
 export function RegisterModal({ children }: RegisterModalProps) {
 
-    const [open, setOpen] = useState(true)
+    const [open, setOpen] = useState(false)
 
     return (
         <Modal

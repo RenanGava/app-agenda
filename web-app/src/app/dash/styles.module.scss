@@ -2,12 +2,21 @@
     background-color: var(--background);
     height: 100vh;
     overflow-y: hidden;
+
 }
 
-.content{
+.content {
     display: flex;
     justify-content: center;
-    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+
+
+    .div{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
 
     @media (max-width: 700px) {

@@ -16,12 +16,11 @@ export default function Dash() {
         <div className={styles.container}>
             <Header />
             <div className={styles.content}>
-
-                <CalendarComponent />
-                <ListClients />
-
-                
-                <RegisterModal children={<RegisterClient/>}/>
+                <div className={styles.div}>
+                    <CalendarComponent />
+                    <ListClients />
+                </div>
+                <RegisterModal children={<RegisterClient />} />
             </div>
         </div>
     )

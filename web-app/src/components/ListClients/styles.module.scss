@@ -1,0 +1,49 @@
+.container{
+    display: flex;
+    max-width: 1000px;
+}
+
+
+.table{
+    // text-align: center;
+    width: 700px;
+
+
+    .tableHeader{
+        width: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: space-around;
+        background: var(--border);
+
+        th{
+            background: var(--border);
+            text-align: center;
+            // max-width: 100px;
+            width: 100%;
+        }
+    }
+
+    .tableContent{
+        // text-align: center;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        text-align: left;
+
+        td{
+            width: 100%;
+            text-align: center;
+
+            button{
+                background: none;
+                border: 0;
+                outline: 0;
+
+                &:last-of-type{
+                    margin-left: 1rem;
+                }
+            }
+        }
+    }
+}
