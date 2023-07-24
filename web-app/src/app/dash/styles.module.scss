@@ -1,25 +1,28 @@
 .container {
-    background-color: var(--background);
+    background: var(--background);
     height: 100vh;
-    overflow-y: hidden;
+    @media (max-width: 1010px) {
+        height: fit-content;
+    }
 
 }
 
 .content {
     display: flex;
+    width: 100%;
     justify-content: center;
-    max-width: 1000px;
-    margin: 0 auto;
+    margin: 10rem auto 0 auto;
+    position: relative;
 
 
     .div{
+        background-color: var(--background);
         display: flex;
+        height: 100%;
         justify-content: space-between;
-        align-items: center;
-    }
 
-
-    @media (max-width: 700px) {
-        flex-direction: column;
+        @media (max-width: 1010px) {
+            flex-direction: column;
+        }
     }
 }

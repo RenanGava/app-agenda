@@ -1,28 +1,43 @@
 import styles from './styles.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPen } from '@fortawesome/free-solid-svg-icons'
+import { faSheetPlastic, faPen } from '@fortawesome/free-solid-svg-icons'
+
+interface ListClientProps {
+    onRequestOpenModal: () => void
+}
 
 
-export function ListClients() {
+export function ListClients({ onRequestOpenModal }: ListClientProps) {
     return (
         <div className={styles.container}>
-            <table className={styles.table}>
-                <tr className={styles.tableHeader}>
-                    <th>Nome</th>
-                    <th>Serviço</th>
-                    <th>horário</th>
-                    <th>Editar</th>
-                </tr>
-                <tr className={styles.tableContent}>
-                    <td>Gabrieli</td>
-                    <td>Sombrancelha</td>
-                    <td>10/07/2023</td>
-                    <td>
-                        <button><FontAwesomeIcon icon={faPen} /></button>
-                        <button><FontAwesomeIcon icon={faPen} /></button>
-                    </td>
-                </tr>
-            </table>
+            <div className={styles.content}>
+                <table className={styles.table}>
+                    <thead className={styles.tableHeader}>
+                        <tr >
+                            <th>Nome</th>
+                            <th>Serviço</th>
+                            <th>horário</th>
+                            <th className={styles.icon}><FontAwesomeIcon icon={faPen} /></th>
+                        </tr>
+                    </thead>
+                    <tbody className={styles.tableContent}>
+                        <tr>
+                            <td>Gabrieli</td>
+                            <td>Sombrancelha</td>
+                            <td>10/07/2023</td>
+                            <td className={styles.edit}>
+                                <button><FontAwesomeIcon icon={faSheetPlastic} /></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button
+                    className={styles.OpenModal}
+                    onClick={onRequestOpenModal}
+                >
+                    Novo Cliente
+                </button>
+            </div>
         </div>
     )
 }

@@ -1,5 +1,5 @@
 .formLogin {
-    margin-top: 300px;
+    margin-top: 400px;
     width: 100%;
     text-align: center;
 
@@ -66,6 +66,10 @@
 
     .inputfield + .inputfield{
         margin-top: 1rem;
+    }
+
+    @media (max-width: 700px) {
+        margin-top: 400px;
     }
 
 

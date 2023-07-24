@@ -1,10 +1,15 @@
 import { ChangeEvent, useCallback, useState } from 'react';
 import dayjs from 'dayjs';
 import styles from './styles.module.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClose } from '@fortawesome/free-solid-svg-icons'
 
 
+interface RegisterClientProps{
+    setIsOpen: (arg: boolean) => void
+}
 
-export function RegisterClient() {
+export function RegisterClient({ setIsOpen }: RegisterClientProps) {
 
     const [selectedDate, setSelectedDate] = useState<boolean>(false)
     const [date, setDate] = useState<string>()
@@ -15,17 +20,24 @@ export function RegisterClient() {
     const hours = Array.from({ length: 24 }, (_, i) => i)
 
 
-    const handleDatePicker  = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    const handleDatePicker = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         setDate(dayjs(e.target.value).format('DD/MM/YYYY HH:mm'))
         setSelectedDate(!!e.target.value)
         console.log(e.target.value);
     }, [])
 
-    console.log(date);
     return (
         <div className={styles.container}>
 
             <form className={styles.formContainer}>
+
+                <button 
+                    type='button' 
+                    className={styles.close}
+                    onClick={ e => setIsOpen(false)}
+                >
+                    <FontAwesomeIcon icon={faClose} />
+                </button>
                 <div>
                     <h1>Agendar Horário</h1>
                 </div>
@@ -43,8 +55,8 @@ export function RegisterClient() {
                     <div className={styles.selectHour}>
                         {!selectedDate && <span>Data/Hora</span>}
                         {selectedDate && <span>{date}</span>}
-                        <input 
-                            type="datetime-local" 
+                        <input
+                            type="datetime-local"
                             onChange={handleDatePicker}
                         />
                     </div>

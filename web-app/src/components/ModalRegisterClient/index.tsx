@@ -2,17 +2,19 @@ import Modal from 'react-modal'
 import { ReactNode, useState } from 'react'
 
 interface RegisterModalProps {
-    children: ReactNode
+    children: ReactNode;
+    isOpen: boolean;
+    setIsOpen: (arg: boolean) => void
 }
 
-export function RegisterModal({ children }: RegisterModalProps) {
+export function RegisterModal({ children, isOpen, setIsOpen }: RegisterModalProps) {
 
-    const [open, setOpen] = useState(false)
+    
 
     return (
         <Modal
-            isOpen={open}
-            onRequestClose={() => setOpen(false)}
+            isOpen={isOpen}
+            onRequestClose={() => setIsOpen(false)}
             style={{
                 overlay: {
                     position: 'fixed',
@@ -23,8 +25,9 @@ export function RegisterModal({ children }: RegisterModalProps) {
                     backgroundColor: 'rgba(233, 159, 202, 0.8)',
                 },
                 content:{
-                    margin: '0 auto',
+                    margin: '10rem auto 0 auto',
                     padding: 0,
+                    height:  "560px",
                     overflow: 'hidden',
                     maxWidth: '500px'
                 }

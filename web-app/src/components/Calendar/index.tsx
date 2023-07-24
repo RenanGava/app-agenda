@@ -1,23 +1,19 @@
 import { Calendar } from '@natscale/react-calendar';
+import styles from './styles.module.scss'
 import '@natscale/react-calendar/dist/main.css';
+import { useEffect, useState } from 'react'
+import { CalendarProps } from '@natscale/react-calendar/dist/utils/types';
 
+export function CalendarComponent({...rest}: CalendarProps) {
 
-export function CalendarComponent() {
-
-
-    const array = [new Date(2020, 7, 12), new Date(2020, 7, 15), new Date(2020, 7, 20)]
-
-    function handleTeste(e: Date | Date[]) {
-        console.log(e);
-
-    }
+    
+    
+    
 
     return (
         <Calendar
-            value={array}
-            className='calendar'
-            isMultiSelector={true}
-            onChange={e => { handleTeste(e) }}
+            {...rest}
+            className={styles.calendar}
         />
     )
 }
