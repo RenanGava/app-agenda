@@ -7,7 +7,7 @@ interface RegisterModalProps {
     setIsOpen: (arg: boolean) => void
 }
 
-export function RegisterModal({ children, isOpen, setIsOpen }: RegisterModalProps) {
+export function ModalComponent({ children, isOpen, setIsOpen }: RegisterModalProps) {
 
     
 

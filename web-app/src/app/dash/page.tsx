@@ -5,11 +5,9 @@ import styles from './styles.module.scss'
 import { ListClients } from '@/components/ListClients'
 import { CalendarComponent } from '@/components/Calendar'
 import Modal from 'react-modal'
-import { RegisterModal } from '@/components/ModalRegisterClient'
+import { ModalComponent } from '@/components/Modal'
 import { useCallback, useState } from 'react'
 import { monthsLabel, weekDaysLabel } from '@/components/Calendar/CalendarLabels'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -49,15 +47,15 @@ export default function Dash() {
                         onChange={e => { handleRegisterClient(e) }}
                     />
                     <ListClients 
-                        onRequestOpenModal={() => setIsOpen(true)}
+                        onRequestOpenModal={setIsOpen}
                     />
                 </div>
-                <RegisterModal
+                <ModalComponent
                     isOpen={isOpen}
                     setIsOpen={setIsOpen}
                 >
                     <RegisterClient setIsOpen={setIsOpen} />
-                </RegisterModal>
+                </ModalComponent>
             </div>
         </div>
     )

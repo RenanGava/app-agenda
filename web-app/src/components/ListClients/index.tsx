@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSheetPlastic, faPen } from '@fortawesome/free-solid-svg-icons'
 
 interface ListClientProps {
-    onRequestOpenModal: () => void
+    onRequestOpenModal: (ars: boolean) => void
 }
 
 
@@ -33,7 +33,7 @@ export function ListClients({ onRequestOpenModal }: ListClientProps) {
                 </table>
                 <button
                     className={styles.OpenModal}
-                    onClick={onRequestOpenModal}
+                    onClick={() => onRequestOpenModal(true) }
                 >
                     Novo Cliente
                 </button>
