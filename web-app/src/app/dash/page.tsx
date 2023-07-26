@@ -8,12 +8,16 @@ import Modal from 'react-modal'
 import { ModalComponent } from '@/components/Modal'
 import { useCallback, useState } from 'react'
 import { monthsLabel, weekDaysLabel } from '@/components/Calendar/CalendarLabels'
+import { EditClient } from '@/components/EditClient'
 
 
 
 export default function Dash() {
 
     const [isOpen, setIsOpen] = useState<boolean>(false)
+
+    const [editClientOpen, setEditClientOpen] = useState<boolean>(false)
+
     const array = [new Date(2023, 6, 30), new Date(2023, 7, 1), new Date(2023, 7, 20)]
 
 
@@ -23,15 +27,15 @@ export default function Dash() {
     }
 
     const isDateRegisted = useCallback((calendarDate: Date): boolean => {
-        for (let data of array){
-            if(data.getDate() === calendarDate.getDate() && data.getMonth() === calendarDate.getMonth()){
+        for (let data of array) {
+            if (data.getDate() === calendarDate.getDate() && data.getMonth() === calendarDate.getMonth()) {
                 return true
             }
         }
     }, [])
 
-    console.log(typeof(array[0]));
-    
+    console.log(typeof (array[0]));
+
     return (
         <div className={styles.container}>
             <Header />
@@ -46,8 +50,9 @@ export default function Dash() {
                         isHighlight={isDateRegisted}
                         onChange={e => { handleRegisterClient(e) }}
                     />
-                    <ListClients 
+                    <ListClients
                         onRequestOpenModal={setIsOpen}
+                        onRequestOpenEditClientModal={setEditClientOpen}
                     />
                 </div>
                 <ModalComponent
@@ -55,6 +60,12 @@ export default function Dash() {
                     setIsOpen={setIsOpen}
                 >
                     <RegisterClient setIsOpen={setIsOpen} />
+                </ModalComponent>
+                <ModalComponent
+                    isOpen={editClientOpen}
+                    setIsOpen={setEditClientOpen}
+                >
+                    <EditClient />
                 </ModalComponent>
             </div>
         </div>

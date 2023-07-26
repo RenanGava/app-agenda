@@ -1,0 +1,132 @@
+.container {
+    height: 100%;
+    display: flex;
+    background-color: var(--background);
+    // align-items: center;
+    padding: 1.5rem;
+    position: relative;
+
+    button.Close{
+        position: absolute;
+        right: 20px;
+        background-color: transparent;
+        color: red;
+        border: 0;
+        font-size: 2rem;
+        
+        &:hover{
+            filter: brightness(0.8);
+        }
+    }
+
+    .clientData {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto 0 auto;
+
+        h1{
+            text-align: center;
+            padding-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+
+        input {
+            height: 40px;
+            padding-left: 1rem;
+            border: 2px solid var(--border);
+            outline: 0;
+            border-radius: 0.25rem;
+
+            &::placeholder {
+                color: var(--text);
+            }
+        }
+
+        // input:nth-of-type(1) {
+        //     // margin-top: 2rem;
+        // }
+
+        input:nth-of-type(5) {
+            margin-bottom: 2rem;
+        }
+
+        input+input {
+            margin-top: 1rem;
+        }
+
+        textarea {
+            border: 2px solid var(--border);
+            height: 100px;
+            resize: none;
+            outline: 0;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+
+            &::placeholder {
+                color: var(--text);
+            }
+        }
+
+
+        .datetime {
+            width: 100%;
+            display: flex;
+            margin: 1rem 0;
+            position: relative;
+            border: 2px solid var(--border);
+            outline: 0;
+            padding: 0;
+            padding-left: 1rem;
+            border-radius: 0.25rem;
+            background-color: var(--white);
+
+            span{
+                position: absolute;
+                width: 100%;
+                color: var(--border);
+                line-height: 40px;
+            }
+
+            input{ 
+                width: 100%;
+                line-height: 40px;
+                position: relative;
+                color: var(--border);
+                opacity: 0;
+                margin: 0;
+
+
+                &::-webkit-calendar-picker-indicator {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: transparent;
+                    color: var(--border);
+                }
+            }
+        }
+    }
+}
+
+.submit{
+    margin: 1rem auto 0 auto;
+    line-height: 40px;
+    width: 100%;
+    border-radius: 0.25rem;
+    background-color: var(--buttonColor);
+    color: var(--white);
+    max-width: 300px;
+    outline: 0;
+    border: 0;
+    &:hover{
+        filter: brightness(0.8);
+    }
+}

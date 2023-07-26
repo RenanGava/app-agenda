@@ -1,10 +1,10 @@
 import Modal from 'react-modal'
-import { ReactNode, useState } from 'react'
+import React, { ReactNode, useState } from 'react'
 
 interface RegisterModalProps {
     children: ReactNode;
     isOpen: boolean;
-    setIsOpen: (arg: boolean) => void
+    setIsOpen?: (arg: boolean) => void
 }
 
 export function ModalComponent({ children, isOpen, setIsOpen }: RegisterModalProps) {

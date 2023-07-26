@@ -31,6 +31,10 @@
         border: 0;
         font-size: 2rem;
         color: red;
+
+        &:hover{
+            filter: brightness(0.8);
+        }
     }
 
     h1 {
@@ -141,6 +145,7 @@
                 width: 100%;
                 max-width: fit-content;
                 height: 40px;
+                color: var(--border);
 
                 &::-webkit-calendar-picker-indicator {
                     position: absolute;

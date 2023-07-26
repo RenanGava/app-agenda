@@ -4,10 +4,14 @@ import { faSheetPlastic, faPen } from '@fortawesome/free-solid-svg-icons'
 
 interface ListClientProps {
     onRequestOpenModal: (ars: boolean) => void
+    onRequestOpenEditClientModal: (ars: boolean) => void
 }
 
 
-export function ListClients({ onRequestOpenModal }: ListClientProps) {
+export function ListClients({ 
+    onRequestOpenModal, 
+    onRequestOpenEditClientModal 
+}: ListClientProps) {
     return (
         <div className={styles.container}>
             <div className={styles.content}>
@@ -26,7 +30,11 @@ export function ListClients({ onRequestOpenModal }: ListClientProps) {
                             <td>Sombrancelha</td>
                             <td>10/07/2023</td>
                             <td className={styles.edit}>
-                                <button><FontAwesomeIcon icon={faSheetPlastic} /></button>
+                                <button
+                                    onClick={() => onRequestOpenEditClientModal(true)}
+                                >
+                                    <FontAwesomeIcon icon={faSheetPlastic} />
+                                </button>
                             </td>
                         </tr>
                     </tbody>
