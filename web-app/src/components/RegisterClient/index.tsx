@@ -58,6 +58,7 @@ export function RegisterClient({ setIsOpen }: RegisterClientProps) {
                         <input
                             type="datetime-local"
                             onChange={handleDatePicker}
+                            
                         />
                     </div>
                 </div>
