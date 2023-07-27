@@ -1,0 +1,33 @@
+version: '3.8'
+
+
+services:
+  server:
+    depends_on:
+      - postgres
+    build: ./
+    ports:
+      - 8080:8080
+    env_file:
+      - ./.env
+    environment:
+      DATABASE_URL: postgres://postgres:admin@postgres:5432/app-agenda?schema=public
+    command: ./entrypoint.sh
+  
+
+  postgres:
+    image: 'postgres'
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: app-agenda
+    ports:
+      - 4000:5432
+    volumes:
+      - postgresVolume:/data/db
+
+
+volumes:
+  postgresVolume:
