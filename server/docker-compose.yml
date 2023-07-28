@@ -8,37 +8,22 @@ services:
     build: ./
     ports:
       - 8080:8080
-    # env_file:
-    #   - ./.env
-    # environment:
-      # DATABASE_URL: postgressql://postgres:admin@server-postgressql:5432/appagenda?schema=public
-    # command: ./entrypoint.sh
-    environment:
-      DATABASE_URL: postgres://user:pass@postgres:5432/db
-      # NODE_ENV: development
-      PORT: 8080
+    env_file:
+      - ./.env
+      - ./prisma/.env
     entrypoint: ./entrypoint.sh
 
   postgres:
-    image: postgres:15.1-bullseye
+    image: 'postgres:15.1-bullseye'
+    restart: always
+    env_file:
+      - ./.env
+      - ./prisma/.env
     ports:
-      - "35432:5432"
-    environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: pass
-      POSTGRES_DB: db
-  
-
-  # postgressql:
-  #   image: 'postgres:15.1-bullseye'
-  #   restart: always
-  #   env_file:
-  #     - ./prisma/.env
-  #   ports:
-  #     - 5433:5432
-  #   volumes:
-  #     - postgres:/data/db
+      - 5444:5432
+    volumes:
+      - postgres:/data/db
 
 
-# volumes:
-  # postgres:
+volumes:
+  postgres:
