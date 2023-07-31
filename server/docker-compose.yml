@@ -10,7 +10,6 @@ services:
       - 8080:8080
     env_file:
       - ./.env
-      - ./prisma/.env
     entrypoint: ./entrypoint.sh
 
   postgres:
@@ -18,9 +17,8 @@ services:
     restart: always
     env_file:
       - ./.env
-      - ./prisma/.env
     ports:
-      - 5444:5432
+      - 5444:5433
     volumes:
       - postgres:/data/db
 
