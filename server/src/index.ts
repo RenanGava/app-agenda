@@ -13,6 +13,7 @@ app.get("/", (req: Request, res: Response) => {
     return res.json({ok: true})
 })
 
+
 // process.env.PORT || 
 app.listen(process.env.PORT || 3333, () => {
     console.log('Server Rodando!', process.env.PORT);
