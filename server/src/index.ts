@@ -10,11 +10,10 @@ app.use(cors())
 
 app.get("/", (req: Request, res: Response) => {
 
-    return res.json({ok: true})
+    return res.json({ ok: true })
 })
 
 
-// process.env.PORT || 
 app.listen(process.env.PORT, () => {
     console.log('Server Rodando!', process.env.PORT);
 })
