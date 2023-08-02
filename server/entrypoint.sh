@@ -1,5 +1,4 @@
 #!/bin/sh
-sleep 5
 
 yarn install
 yarn prisma generate
