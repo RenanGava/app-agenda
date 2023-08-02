@@ -1,47 +1,24 @@
 version: "3.9"
 services:
 
-  db:
-    image: postgres:15.1-bullseye
-    restart: always
-    container_name: integration-tests-prisma
-    ports:
-      - '5444:5432'
-    env_file:
-      - ./.env
-    volumes:
-      - postgres:/data/db
-
   server:
-    build: 
-      context: .
-      dockerfile: Dockerfile
     depends_on:
-      - db
+      - postgres
+    build: .
+    ports:
+      - 8080:8080
     env_file:
       - ./.env
 
-
-volumes:
+  # lembrando que o container deve ter oi mesmo nome DB_HOST no arquivo .env
   postgres:
+    image: 'postgres:15.1-bullseye'
+    restart: always
+    env_file:
+      - ./.env
+    ports:
+      - 5444:5432
+    volumes:
+      - ./.docker/db/data:/var/lib/postgresql/:delegated
 
-# Código exemplo:
 
-# server:
-  #   depends_on:
-  #     - postgres
-  #   build: .
-  #   ports:
-  #     - 8080:8080
-  #   env_file:
-  #     - ./.env
-
-  # postgres:
-  #   image: 'postgres:15.1-bullseye'
-  #   restart: always
-  #   env_file:
-  #     - ./.env
-  #   ports:
-  #     - 5444:5432
-  #   volumes:
-  #     - ./.docker/db/data:/var/lib/postgresql/:delegated
