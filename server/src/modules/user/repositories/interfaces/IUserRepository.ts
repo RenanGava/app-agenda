@@ -1,5 +1,4 @@
-import { User } from "../../../user/model/User";
-import { User as UserType } from '../../model/User'
+import { User } from '../../model/User'
 
 
 interface IUserDTO{
@@ -15,7 +14,7 @@ interface FyndByEmail{
 
 interface IUserRepository {
     create({ name, email, password }: IUserDTO): void
-    findByEmail(email: string): UserType
+    findByEmail(email: string): Promise<User>
 }
 
 

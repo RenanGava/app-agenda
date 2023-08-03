@@ -6,12 +6,12 @@ import dayjs from 'dayjs';
 
 class User {
     id?: string;
-    name: string;
-    email: string;
-    password: string
+    name: string | undefined;
+    email: string | undefined;
+    password: string | undefined | null
     createdAt?: Date;
-    permission: Permissions
-    clients: []
+    permission: Permissions | undefined
+    clients?: []
 
 
     constructor(){
