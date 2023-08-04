@@ -1,19 +1,22 @@
+import { Permissions } from '@prisma/client';
 import { User } from '../../model/User'
 
 
 interface IUserDTO{
     name: string;
     email: string;
-    password?: string
+    password?: string;
+    permission: Permissions
 }
 
 interface FyndByEmail{
     email: string
 }
 
+//{ name, email, password, permission }: IUserDTO
 
 interface IUserRepository {
-    create({ name, email, password }: IUserDTO): void
+    create(): Promise<void>
     findByEmail(email: string): Promise<User>
 }
 

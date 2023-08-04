@@ -4,28 +4,67 @@ import { prisma } from "../../../../prisma/prisma";
 
 class UserRepository implements IUserRepository {
 
+    private static INSTANCE: UserRepository
 
-    create({ name, email, password }: IUserDTO): void {
+    public static getInstance():UserRepository{
 
+        if(!UserRepository.INSTANCE){
+            UserRepository.INSTANCE = new UserRepository()
+        }
+
+        return UserRepository.INSTANCE
+    }
+
+
+    // { name, email, password, permission }: IUserDTO
+    async create(): Promise<void> {
+        // const user = new User()
+
+        // const findUsers = await prisma.user.findMany()
+
+        // if(findUsers.length < 0){
+
+        //     permission = "SUPER_ADMIN"
+        //     console.log(permission);
+            
+        //     // const createUser = await prisma.user.create({
+        //     //     data:{
+        //     //         email: email,
+        //     //         name: name,
+
+        //     //     }
+        //     // })
+        // }
+
+        // const userAlreadyExists = await this.findByEmail(email)
+
+        // if (userAlreadyExists) {
+        //     throw new Error('User already exists!')
+        // }
+
+        
+        // const createUser = await prisma.user.create()
     }
 
     async findByEmail(email: string): Promise<User> {
         const user = new User()
-        try{
+        try {
             const findUser = await prisma.user.findUnique({
-                where:{
+                where: {
                     email: email
                 }
             })
 
-            user.id = findUser?.id
-            user.email = findUser?.email
-            user.name = findUser?.name
-            user.password = findUser?.password
-            user.permission = findUser?.permission
-            user.createdAt = findUser?.createdAt
+            Object.assign(user, {
+                id: findUser?.id,
+                email: findUser?.email,
+                name: findUser?.name,
+                password: findUser?.password,
+                permission: findUser?.permission,
+                createdAt: findUser?.createdAt
+            })
 
-        }catch(err){
+        } catch (err) {
             console.log(err);
         }
 

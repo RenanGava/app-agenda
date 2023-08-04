@@ -1,6 +1,9 @@
-import express, { Request, Response } from 'express'
+import express, { NextFunction, Request, Response } from 'express'
+import 'express-async-errors'
 import cors from 'cors'
 import { config } from 'dotenv'
+
+import { router } from './routes'
 
 config()
 const app = express()
@@ -8,9 +11,15 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-app.get("/", (req: Request, res: Response) => {
+//  vamos receber todas as rotas do app por esse use.
+app.use(router)
 
-    return res.json({ ok: true })
+app.use((err: Error, req:Request, res: Response, next: NextFunction) => {
+    
+    if(err.message){
+        console.log(err);
+        res.json({message: err.message})
+    }
 })
 
 
