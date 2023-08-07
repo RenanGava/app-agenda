@@ -16,10 +16,14 @@ app.use(router)
 
 app.use((err: Error, req:Request, res: Response, next: NextFunction) => {
     
-    if(err.message){
-        console.log(err);
-        res.json({message: err.message})
+    if(err instanceof Error){
+        return res.json({message: err.message})
     }
+
+    return res.status(500).json({
+        status: "error",
+        message: "Internal Server Error"
+    })
 })
 
 

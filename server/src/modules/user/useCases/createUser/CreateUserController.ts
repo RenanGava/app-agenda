@@ -1,6 +1,5 @@
 import { Request, Response } from 'express'
 import { CreateUserUseCase } from './CreateUserUseCase';
-import { UserRepository } from '../../repositories/implementation/UserRepository';
 import { TypesJWT } from '../../../../Types/TypesJWT';
 
 
@@ -15,14 +14,11 @@ class CreateUserController {
 
         const { name, email, password, permission } = request.body
 
-        
-        // this.createUserUseCase.execute()
-        // console.log('teste');
         // new CreateUserUseCase(UserRepository.getInstance()).execute({ name, email, password, permission })
-        this.createUserUseCase.execute({ name, email, password, permission })
+        const user = await this.createUserUseCase.execute({ name, email, password, permission })
         
 
-        response.status(201).json(request.body)
+        response.status(201).json(user)
 
     }
 }
