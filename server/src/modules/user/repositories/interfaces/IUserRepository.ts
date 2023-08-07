@@ -9,14 +9,8 @@ interface IUserDTO{
     permission: Permissions
 }
 
-interface FyndByEmail{
-    email: string
-}
-
-//{ name, email, password, permission }: IUserDTO
-
 interface IUserRepository {
-    create(): Promise<void>
+    create({ name, email, password, permission }: IUserDTO): Promise<void>
     findByEmail(email: string): Promise<User>
 }
 

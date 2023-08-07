@@ -9,15 +9,20 @@ class UserRepository implements IUserRepository {
     public static getInstance():UserRepository{
 
         if(!UserRepository.INSTANCE){
+
             UserRepository.INSTANCE = new UserRepository()
+                        
         }
 
         return UserRepository.INSTANCE
     }
 
 
-    // { name, email, password, permission }: IUserDTO
-    async create(): Promise<void> {
+    // 
+    public async create({ name, email, password, permission }: IUserDTO): Promise<void> {
+
+        console.log("dentro do create");
+        
         // const user = new User()
 
         // const findUsers = await prisma.user.findMany()
@@ -46,7 +51,7 @@ class UserRepository implements IUserRepository {
         // const createUser = await prisma.user.create()
     }
 
-    async findByEmail(email: string): Promise<User> {
+    public async findByEmail(email: string): Promise<User> {
         const user = new User()
         try {
             const findUser = await prisma.user.findUnique({
