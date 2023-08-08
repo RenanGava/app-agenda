@@ -1,5 +1,4 @@
 import { Permissions } from "@prisma/client";
-import { UserRepository } from "../../repositories/implementation/UserRepository";
 import { IUserRepository } from "../../repositories/interfaces/IUserRepository";
 import { User as UserPrisma } from '@prisma/client'
 
@@ -12,7 +11,7 @@ interface IRequest{
 
 class CreateUserUseCase{
 
-    constructor(private createUserRepository: UserRepository){}
+    constructor(private createUserRepository: IUserRepository){}
 
     public async execute({ email, name, password, permission }:IRequest): Promise<UserPrisma>{
         

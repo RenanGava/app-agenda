@@ -1,6 +1,6 @@
 import { IUserDTO, IUserRepository } from "../interfaces/IUserRepository";
 import { prisma } from "../../../../prisma/prisma";
-import { User as UserPrisma } from '@prisma/client'
+import { Permissions, User as UserPrisma } from '@prisma/client'
 
 
 class UserRepository implements IUserRepository {
@@ -22,13 +22,9 @@ class UserRepository implements IUserRepository {
     // 
     public async create({ name, email, password, permission }: IUserDTO): Promise<UserPrisma> {
 
-        console.log("dentro do create");
-
         const findUsers = await prisma.user.findMany()
 
         if (findUsers.length <= 0) {
-
-            permission = "SUPER_ADMIN"
             console.log(permission);
 
             const createUser = await prisma.user.create({
@@ -54,7 +50,6 @@ class UserRepository implements IUserRepository {
                     email: email,
                     name: name,
                     permission: "USER",
-                    password: password
                 }
             })
 
@@ -72,6 +67,22 @@ class UserRepository implements IUserRepository {
         })
 
         return findUser
+    }
+
+    loginUser(email: string): Promise<UserPrisma | null> {
+        try {
+            const userAlreadyExists = this.findByEmail(email)
+
+            if(!userAlreadyExists){
+                throw new Error('User not exists!')
+            }else{
+                return userAlreadyExists   
+            }
+        } catch (error) {
+            throw error
+        }
+    
+        
     }
 }
 
