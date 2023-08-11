@@ -9,13 +9,18 @@ interface IUserDTO {
     permission?: Permissions
 }
 
+interface UserLogin{
+    user: UserPrisma,
+    token: string
+}
+
 
 interface IUserRepository {
     create({ name, email, password, permission }: IUserDTO): Promise<UserPrisma>;
     findByEmail(email: string): Promise<UserPrisma | null>;
-    loginUser(email: string): Promise<UserPrisma | null>
+    loginUser(email: string): Promise<UserLogin | null>
 }
 
 
 
-export { IUserDTO, IUserRepository }
+export { IUserDTO, IUserRepository, UserLogin }

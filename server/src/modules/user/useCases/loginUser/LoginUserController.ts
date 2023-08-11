@@ -1,18 +1,26 @@
 import { Request, Response } from "express";
 import { LoginUserUseCase } from "./LoginUserUseCase";
+import { GenerateRefreshToken } from "../../../../JWT/GenerateRefreshToken";
 
 
 
 class LoginUserController{
 
-    constructor(private loginUserUseCase: LoginUserUseCase){}
 
     async hanlde(request: Request, response: Response){
 
         const { email } = request.query
+        GenerateRefreshToken({
+            userId: "cll5kmic10000v3e8p76mtrdi",
+            duration: 15
+        })
 
-        this.loginUserUseCase.execute(email)
-        return response.json({ok: true})
+        const loginUserUseCase = new LoginUserUseCase()
+
+        const user = await loginUserUseCase.execute(email)
+        // console.log(email);
+        
+        return response.json(user)
     }
 }
 

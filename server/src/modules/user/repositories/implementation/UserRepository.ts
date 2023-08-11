@@ -1,6 +1,7 @@
-import { IUserDTO, IUserRepository } from "../interfaces/IUserRepository";
+import { IUserDTO, IUserRepository, UserLogin } from "../interfaces/IUserRepository";
 import { prisma } from "../../../../prisma/prisma";
 import { Permissions, User as UserPrisma } from '@prisma/client'
+import { GenerateTokenJWT } from "../../../../JWT/GenerateToken";
 
 
 class UserRepository implements IUserRepository {
@@ -25,7 +26,6 @@ class UserRepository implements IUserRepository {
         const findUsers = await prisma.user.findMany()
 
         if (findUsers.length <= 0) {
-            console.log(permission);
 
             const createUser = await prisma.user.create({
                 data: {
@@ -69,20 +69,30 @@ class UserRepository implements IUserRepository {
         return findUser
     }
 
-    loginUser(email: string): Promise<UserPrisma | null> {
+    async loginUser(email: string): Promise<UserLogin | null> {
         try {
-            const userAlreadyExists = this.findByEmail(email)
+            const user = await this.findByEmail(email)
 
-            if(!userAlreadyExists){
+            if (!user) {
+
                 throw new Error('User not exists!')
-            }else{
-                return userAlreadyExists   
+                
+            } else {
+
+                const token = await GenerateTokenJWT({
+                    id: user.id, 
+                    email:user.email
+                })
+                return {
+                    user, 
+                    token
+                }
             }
         } catch (error) {
             throw error
         }
-    
-        
+
+
     }
 }
 

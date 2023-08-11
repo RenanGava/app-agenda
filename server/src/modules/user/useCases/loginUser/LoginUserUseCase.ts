@@ -1,14 +1,16 @@
-import { IUserRepository } from "../../repositories/interfaces/IUserRepository";
+import { UserRepository } from "../../repositories/implementation/UserRepository";
 
 
 
 class LoginUserUseCase{
 
-    constructor(private loginUserRepository: IUserRepository){}
-
     async execute(email: any){
-        console.log('Chegou', email);
-        
+
+        const loginUserRepository = UserRepository.getInstance()
+
+        const user = await loginUserRepository.loginUser(email)
+
+        return user
     }
 }
 

@@ -6,13 +6,12 @@ import { TypesJWT } from '../../../../Types/TypesJWT';
 
 class CreateUserController {
 
-    constructor(private createUserUseCase: CreateUserUseCase) { }
-
     async handle(request: Request, response: Response) {
 
         const { name, email, password, permission } = request.body
+        const createUserUseCase = new CreateUserUseCase()
 
-        const user = await this.createUserUseCase.execute({ name, email, password, permission })
+        const user = await createUserUseCase.execute({ name, email, password, permission })
         
         response.status(201).json(user)
     }
