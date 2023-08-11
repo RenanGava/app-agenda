@@ -18,14 +18,16 @@ enum Permissions {
 }
 
 model User {
-  id         String      @id @default(cuid())
-  email      String      @unique
-  name       String
-  password   String?
-  createdAt  DateTime    @default(now())
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  password  String?
+  createdAt DateTime @default(now())
+
   //Relaçãoes do bando de dados
-  permission Permissions
-  clients    Client[]
+  refresh_token Refresh_Token?
+  permission    Permissions
+  clients       Client[]
 
   @@map("user")
 }
@@ -44,4 +46,16 @@ model Client {
   userId String?
 
   @@map("client")
+}
+
+model Refresh_Token {
+  id        String @id @default(uuid())
+  expiresIn Int
+
+  //Relaçãoes do bando de dados
+  user User @relation(fields: [userId], references: [id])
+  userId String @unique
+
+
+  @@map("refresh_token")
 }
