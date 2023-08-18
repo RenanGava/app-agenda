@@ -1,7 +1,6 @@
-import { IUserDTO, IUserRepository, UserLogin } from "../interfaces/IUserRepository";
+import { IUserDTO, IUserRepository } from "../interfaces/IUserRepository";
 import { prisma } from "../../../../prisma/prisma";
-import { Permissions, User as UserPrisma } from '@prisma/client'
-import { GenerateTokenJWT } from "../../../../JWT/GenerateToken";
+import { Permissions, Refresh_Token, User as UserPrisma } from '@prisma/client'
 
 
 class UserRepository implements IUserRepository {
@@ -69,31 +68,28 @@ class UserRepository implements IUserRepository {
         return findUser
     }
 
-    async loginUser(email: string): Promise<UserLogin | null> {
-        try {
-            const user = await this.findByEmail(email)
+    public async findRefreshToken(userId: string): Promise<Refresh_Token | null>{
 
-            if (!user) {
-
-                throw new Error('User not exists!')
-                
-            } else {
-
-                const token = await GenerateTokenJWT({
-                    id: user.id, 
-                    email:user.email
-                })
-                return {
-                    user, 
-                    token
-                }
+        const refresh_Token = await prisma.refresh_Token.findUnique({
+            where:{
+                userId: userId
             }
-        } catch (error) {
-            throw error
-        }
+        })
 
-
+        return refresh_Token
     }
+
+    public async deleteRefreshToken(id: string){
+
+        const refreshToken = await prisma.refresh_Token.delete({
+            where:{
+                id: id,
+            }
+        })
+        
+        return refreshToken
+    }
+
 }
 
 

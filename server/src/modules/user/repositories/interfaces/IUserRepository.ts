@@ -1,4 +1,4 @@
-import { Permissions, User as UserPrisma } from '@prisma/client';
+import { Permissions, User as UserPrisma, Refresh_Token } from '@prisma/client';
 import { User } from '../../model/User'
 
 
@@ -9,18 +9,13 @@ interface IUserDTO {
     permission?: Permissions
 }
 
-interface UserLogin{
-    user: UserPrisma,
-    token: string
-}
-
-
 interface IUserRepository {
     create({ name, email, password, permission }: IUserDTO): Promise<UserPrisma>;
     findByEmail(email: string): Promise<UserPrisma | null>;
-    loginUser(email: string): Promise<UserLogin | null>
+    findRefreshToken(userId: string): Promise<Refresh_Token | null>
+    deleteRefreshToken(id: string): Promise<Refresh_Token>
 }
 
 
 
-export { IUserDTO, IUserRepository, UserLogin }
+export { IUserDTO, IUserRepository }
