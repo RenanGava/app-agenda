@@ -14,6 +14,6 @@ userRouter.post('/', createUserController.handle)
 userRouter.post('/login', loginUserController.hanlde)
 
 // refresh token user IsAuthenticated,
-userRouter.get('/refresh-token',  rerfeshTokenController.handle)
+userRouter.get('/refresh-token', IsAuthenticated,  rerfeshTokenController.handle)
 
 export { userRouter }

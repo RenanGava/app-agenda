@@ -11,7 +11,7 @@ async function GenerateTokenJWT({ id, email }: GenerateTokenJWTProps): Promise<s
         email: email
     }, process.env.SECRET_JWT, {
         subject: id,
-        expiresIn: '15s'
+        expiresIn: 60 * 60 * 24
     })
 
     return token;

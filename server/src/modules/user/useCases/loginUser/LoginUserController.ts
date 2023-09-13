@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { LoginUserUseCase } from "./LoginUserUseCase";
-import { decode } from 'jsonwebtoken'
 
 
 

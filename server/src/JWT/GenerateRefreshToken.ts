@@ -10,7 +10,7 @@ interface GenerateRefreshTokenProps {
 
 export async function GenerateRefreshToken({ userId, duration }: GenerateRefreshTokenProps):Promise<Refresh_Token> {
 
-    const durationFormated = dayjs().add(duration, 'second').unix()
+    const durationFormated = dayjs().add(duration, 'seconds').unix()
 
     const generateRefreshToken = await prisma.refresh_Token.create({
         data: {
