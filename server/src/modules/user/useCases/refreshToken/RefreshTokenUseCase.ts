@@ -55,7 +55,7 @@ class RefreshTokenUseCase {
             const refreshToken = {
                 id: getRefreshToken.id,
                 expiresIn: getRefreshToken.expiresIn,
-                userId: getRefreshToken.expiresIn
+                userId: getRefreshToken.userId
             }
 
             return {
