@@ -8,7 +8,7 @@ class ClientRepository implements IClientRepository {
 
     private static INSTANCE: ClientRepository
 
-    public getInstance(): ClientRepository {
+    public static getInstance(): ClientRepository {
         
         if(!ClientRepository.INSTANCE){
             ClientRepository.INSTANCE = new ClientRepository()
