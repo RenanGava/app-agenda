@@ -1,5 +1,5 @@
+import { Client } from "@prisma/client";
 import { prisma } from "../../../../prisma/prisma";
-import { UserRepository } from "../../../user/repositories/implementation/UserRepository";
 import { IClientDTO, IClientRepository } from "../interfaces/IClientRepository";
 
 
@@ -9,17 +9,17 @@ class ClientRepository implements IClientRepository {
     private static INSTANCE: ClientRepository
 
     public static getInstance(): ClientRepository {
-        
-        if(!ClientRepository.INSTANCE){
+
+        if (!ClientRepository.INSTANCE) {
             ClientRepository.INSTANCE = new ClientRepository()
         }
-        
+
 
         return ClientRepository.INSTANCE
     }
 
 
-    async create({ userId, name, reservedTime, cellPhone, service, value }: IClientDTO) {
+    public async create({ userId, name, reservedTime, cellPhone, service, value }: IClientDTO) {
 
         const clientAlreadyExist = await prisma.client.findFirst({
             where: {
@@ -46,8 +46,18 @@ class ClientRepository implements IClientRepository {
             }
         })
 
-
         return client
+    }
+
+    public async getClients(userId: string): Promise<Client[]> {
+
+        const clients = await prisma.client.findMany({
+            where:{
+                userId: userId
+            }
+        })
+
+        return clients
     }
 }
 

@@ -13,6 +13,7 @@ interface IClientDTO{
 
 interface IClientRepository{
     create(data: IClientDTO): Promise<Client>;
+    getClients(userId: string): Promise<Client[]>
     // delete(clientId: string): Promise<void>;
     // update(clientId: string): Promise<Client>;
 }
